@@ -1,0 +1,25 @@
+diff --git a/Makefile b/Makefile
+old mode 100644
+new mode 100755
+index 0cbe741..8647214
+--- a/Makefile
++++ b/Makefile
+@@ -112,7 +112,6 @@ install: $(INSTALL_DEP)
+ 	$(RM) $(INSTALL_TSYM) $(INSTALL_DYN) $(INSTALL_SHORT1) $(INSTALL_SHORT2)
+ 	cd src && test -f $(FILE_SO) && \
+ 	  $(INSTALL_X) $(FILE_SO) $(INSTALL_DYN) && \
+-	  $(LDCONFIG) $(INSTALL_LIB) && \
+ 	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT1) && \
+ 	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT2) || :
+ 	cd etc && $(INSTALL_F) $(FILE_MAN) $(INSTALL_MAN)
+@@ -133,7 +132,6 @@ uninstall:
+ 	for file in $(FILES_INC); do \
+ 	  $(UNINSTALL) $(INSTALL_INC)/$$file; \
+ 	  done
+-	$(LDCONFIG) $(INSTALL_LIB)
+ 	$(RMDIR) $(UNINSTALL_DIRS) || :
+ 	@echo "==== Successfully uninstalled LuaJIT $(VERSION) from $(PREFIX) ===="
+ 
+diff --git a/src/Makefile b/src/Makefile
+old mode 100644
+new mode 100755
