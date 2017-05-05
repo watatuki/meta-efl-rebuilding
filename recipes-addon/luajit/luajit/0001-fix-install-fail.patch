@@ -1,9 +1,16 @@
 diff --git a/Makefile b/Makefile
-old mode 100644
-new mode 100755
-index 0cbe741..8647214
+index 0cbe741..d11d0ec 100755
 --- a/Makefile
 +++ b/Makefile
+@@ -56,7 +56,7 @@ INSTALL_PCNAME= luajit.pc
+ INSTALL_STATIC= $(INSTALL_LIB)/$(INSTALL_ANAME)
+ INSTALL_DYN= $(INSTALL_LIB)/$(INSTALL_SONAME)
+ INSTALL_SHORT1= $(INSTALL_LIB)/$(INSTALL_SOSHORT)
+-INSTALL_SHORT2= $(INSTALL_LIB)/$(INSTALL_SOSHORT)
++INSTALL_SHORT2= $(INSTALL_LIB)/$(INSTALL_SOSHORT).2
+ INSTALL_T= $(INSTALL_BIN)/$(INSTALL_TNAME)
+ INSTALL_TSYM= $(INSTALL_BIN)/$(INSTALL_TSYMNAME)
+ INSTALL_PC= $(INSTALL_PKGCONFIG)/$(INSTALL_PCNAME)
 @@ -112,7 +112,6 @@ install: $(INSTALL_DEP)
  	$(RM) $(INSTALL_TSYM) $(INSTALL_DYN) $(INSTALL_SHORT1) $(INSTALL_SHORT2)
  	cd src && test -f $(FILE_SO) && \
@@ -20,6 +27,3 @@ index 0cbe741..8647214
  	$(RMDIR) $(UNINSTALL_DIRS) || :
  	@echo "==== Successfully uninstalled LuaJIT $(VERSION) from $(PREFIX) ===="
  
-diff --git a/src/Makefile b/src/Makefile
-old mode 100644
-new mode 100755
