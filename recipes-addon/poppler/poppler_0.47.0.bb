@@ -7,8 +7,8 @@ SRC_URI = " \
     file://0001-add-manadatory-options-to-find-qt4-qt5-moc.patch \
     file://0002-fix-gcc-6-math-ambiguous-errors.patch \
 "
-SRC_URI[md5sum] = "943679f1030b9bc19a989f24121a282a"
-SRC_URI[sha256sum] = "592bf72960c6b5948b67657594b05e72d9a278daf7613c9f3cdff9a5b73096a8"
+SRC_URI[md5sum] = "669b195ff24173d35cacf1d20b6fe4fa"
+SRC_URI[sha256sum] = "b872e7228fc34a71ce4b47a5aea2a57ae67528818fa846e1e0eda089319bd242"
 
 DEPENDS = "fontconfig zlib cairo lcms"
 
@@ -20,11 +20,12 @@ PACKAGECONFIG[png] = "--enable-libpng,--disable-libpng,libpng"
 PACKAGECONFIG[tiff] = "--enable-libtiff,--disable-libtiff,tiff"
 PACKAGECONFIG[curl] = "--enable-libcurl,--disable-libcurl,curl"
 PACKAGECONFIG[openjpeg] = "--enable-libopenjpeg=openjpeg2,--disable-libopenjpeg,openjpeg"
-PACKAGECONFIG[qt5] = "--enable-poppler-qt5 --with-moc-qt5=${STAGING_BINDIR_NATIVE}/qt5/moc,--disable-poppler-qt5,qtbase qttools-native"
+PACKAGECONFIG[qt5] = "--enable-poppler-qt5 --with-moc-qt5=${STAGING_BINDIR_NATIVE}/qt5/moc,--disable-poppler-qt5,qtbase"
 PACKAGECONFIG[qt4e] = "--enable-poppler-qt4 --with-moc-qt4=${STAGING_BINDIR_NATIVE}/moc4,--disable-poppler-qt4,qt4-embedded"
 PACKAGECONFIG[nss] = "--enable-libnss,--disable-libnss,nss"
 
-SECURITY_CFLAGS = "${SECURITY_NO_PIE_CFLAGS}"
+# Needed for qt5
+CXXFLAGS += "--std=c++11"
 
 EXTRA_OECONF = "\
     --enable-xpdf-headers \
@@ -33,7 +34,7 @@ EXTRA_OECONF = "\
 "
 
 do_compile_prepend() {
-    export GIR_EXTRA_LIBS_PATH="${B}/poppler/.libs"
+        export GIR_EXTRA_LIBS_PATH="${B}/poppler/.libs"
 }
 
 # Adjust library names when building for QT4e
@@ -42,7 +43,7 @@ SRC_URI_append = "${QT4E_PATCHES}"
 
 # check for TARGET_FPU=soft and inform configure of the result so it can disable some floating points
 def get_poppler_fpu_setting(bb, d):
-    if d.getVar('TARGET_FPU') in [ 'soft' ]:
+    if d.getVar('TARGET_FPU', 1) in [ 'soft' ]:
         return "--enable-fixedpoint"
     return ""
 
