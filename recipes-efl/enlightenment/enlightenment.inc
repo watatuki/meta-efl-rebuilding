@@ -8,7 +8,7 @@ inherit e update-alternatives gettext pkgconfig
 #S = "${WORKDIR}/${SRCNAME}"
 B = "${S}"
 
-PACKAGECONFIG ??= "${@bb.utils.filter('DISTRO_FEATURES', 'pam systemd', d)}"
+PACKAGECONFIG = ""
 PACKAGECONFIG[pam] = "--enable-pam,--disable-pam,libpam"
 PACKAGECONFIG[systemd] = "--enable-systemd,--disable-systemd,systemd"
 
@@ -73,7 +73,6 @@ PACKAGES =+ "\
     ${PN}-config-scaleable \
     ${PN}-config-standard \
     ${PN}-config-tiling \
-    ${PN}-theme-default \
     ${PN}-background-dark-gradient \
     ${PN}-background-light-gradient \
     ${PN}-backgrounds \
@@ -131,8 +130,6 @@ FILES_${PN}-config-netbook = "${datadir}/enlightenment/data/config/netbook"
 FILES_${PN}-config-scaleable = "${datadir}/enlightenment/data/config/scaleable"
 FILES_${PN}-config-standard = "${datadir}/enlightenment/data/config/standard"
 FILES_${PN}-config-tiling = "${datadir}/enlightenment/data/config/tiling"
-FILES_${PN}-theme-default = "${datadir}/enlightenment/data/themes/default.edj"
-FILES_${PN}-theme-default = "${datadir}/enlightenment/data/themes/default.edj"
 FILES_${PN}-background-dark-gradient = "${datadir}/enlightenment/data/backgrounds/Dark_Gradient.edj"
 FILES_${PN}-background-light-gradient = "${datadir}/enlightenment/data/backgrounds/Light_Gradient.edj"
 FILES_${PN}-backgrounds = "${datadir}/enlightenment/data/backgrounds/*.edj"
@@ -165,7 +162,6 @@ FILES_illume-keyboard-default-terminal = "\
     ${KEYBOARDS_DIR}/qwerty.png \
 "
 
-RRECOMMENDS_${PN}-config-default = "${PN}-theme-default"
 RRECOMMENDS_${PN}-config-mobile = "\
     illume-keyboard-default-alpha \
     illume-keyboard-default-numeric \
@@ -174,14 +170,10 @@ RRECOMMENDS_${PN}-config-mobile = "\
 
 RRECOMMENDS_${PN}-config-minimalist = "\
     ${PN}-background-light-gradient \
-    ${PN}-theme-default \
 "
 RRECOMMENDS_${PN}-config-netbook = "\
     ${PN}-background-dark-gradient \
-    ${PN}-theme-default \
 "
-RRECOMMENDS_${PN}-config-scaleable = "${PN}-theme-default"
-RRECOMMENDS_${PN}-config-standard = "${PN}-theme-default"
 
 FILES_${PN}-dbg += "\
     ${libdir}/enlightenment/modules/*/*/.debug/ \

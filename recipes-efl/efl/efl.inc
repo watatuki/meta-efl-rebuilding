@@ -349,6 +349,8 @@ FILES_${PN}-dev += " \
     ${libdir}/ethumb*/*/*/*/module.la \
     ${libdir}/eeze*/*/*/*/*/module.la \
     ${libdir}/edje*/*/*/*/module.la \
+    ${libdir}/elementary*/*/*/*/module.la \
+    ${libdir}/elementary*/*/*/*/*/module.la \
     ${libdir}/emotion/modules/gstreamer1/*/module.la \
     ${datadir}/gdb/auto-load \
     ${datadir}/eo/gdb \
