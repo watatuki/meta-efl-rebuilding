@@ -6,8 +6,10 @@ inherit core-image
 IMAGE_FEATURES += "splash package-management x11-base" 
 
 #Enlightenment
-IMAGE_INSTALL  += " enlightenment enlightenment-config-mobile \
+IMAGE_INSTALL  += " enlightenment enlightenment-session \
+                    enlightenment-config-mobile \
                     enlightenment-backgrounds \
+                    elementary elementary-configs elementary-themes \
                   "
 
 IMAGE_INSTALL  += " udev-extraconf " 
