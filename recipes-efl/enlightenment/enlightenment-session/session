@@ -1,0 +1,4 @@
+#!/bin/sh
+#
+
+exec enlightenment_start.oe
