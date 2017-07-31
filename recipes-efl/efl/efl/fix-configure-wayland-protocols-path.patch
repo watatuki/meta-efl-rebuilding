@@ -1,0 +1,15 @@
+diff --git a/configure.ac b/configure.ac
+old mode 100644
+new mode 100755
+index 7e4c177..7b940c2
+--- a/configure.ac
++++ b/configure.ac
+@@ -1999,7 +1999,7 @@ if test "${want_wayland}" = "yes"; then
+         PKG_CHECK_MODULES(WAYLAND_SCANNER, [wayland-scanner])
+         wayland_scanner=`$PKG_CONFIG --variable=wayland_scanner wayland-scanner`
+       fi
+-      ac_wayland_protocols_pkgdatadir=`$PKG_CONFIG --variable=pkgdatadir wayland-protocols`
++      ac_wayland_protocols_pkgdatadir=${WAYLAND_PROTOCOLS_SYSROOT_DIR}`$PKG_CONFIG --variable=pkgdatadir wayland-protocols`
+       AC_SUBST(WAYLAND_PROTOCOLS_DATADIR, $ac_wayland_protocols_pkgdatadir)
+     ])
+ fi

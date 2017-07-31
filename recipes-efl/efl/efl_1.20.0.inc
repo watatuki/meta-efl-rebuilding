@@ -1,6 +1,6 @@
 SUMMARY = "EFL"
 LICENSE = "MIT & BSD & LGPL-2.1"
-LIC_FILES_CHKSUM = "file://COPYING;md5=7289b9073819c9ee98b6f688df9717e8"
+LIC_FILES_CHKSUM = "file://COPYING;md5=e5f6e713fdebf1237adf5c87de8255d8"
 
 DEPENDS_class-native = "freetype-native libxext-native libpng-native jpeg-native tiff-native libfribidi-native glib-2.0-native dbus-native openssl-native"
 #DEPENDS = "virtual/libiconv tslib curl glib-2.0 gnutls pkgconfig zlib jpeg openssl libsndfile1 dbus libexif librsvg freetype libpng tiff libxext virtual/libx11 libxdamage libxrender fontconfig libfribidi giflib udev libxcursor libxcomposite libxinerama libxrandr libxtst libxscrnsaver efl-native util-linux libunwind"
@@ -317,6 +317,7 @@ FILES_elementary-configs = "\
 
 FILES_${PN}-tests = "\
     ${bindir}/elementary* \
+    ${bindir}/efl_wl_test** \
     ${datadir}/elementary/images \
     ${datadir}/elementary/objects \
     ${datadir}/elementary/examples \

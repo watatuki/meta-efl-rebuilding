@@ -1,11 +1,11 @@
-require ${BPN}.inc
+require ${BPN}_${PV}.inc
 
 SRC_URI = "\
-    ${E_RELEASES}/libs/${SRCNAME}/${SRCNAME}-${SRCVER}.tar.gz \
+   git://git.enlightenment.org/core/efl.git \
+   file://fix-configure-wayland-protocols-path.patch \
 "
 
-SRC_URI[md5sum] = "2e7cd56ae3192c2aed9615e1a83e8faf"
-SRC_URI[sha256sum] = "d19669eece770cc09733568c7dfef9870daa0f8b9f613ab76ad14b2f5de20040"
+SRCREV = "0bd8259da885c7cc81293c9d9e4fe0fa87dfd855"
 
 # Temporary disable until error like the one following are fixed
 # efl-native/2_1.8.4-r0/efl-1.8.4/src/lib/eet/.libs/libeet.so: file not recognized: File truncated
@@ -14,5 +14,6 @@ SRC_URI[sha256sum] = "d19669eece770cc09733568c7dfef9870daa0f8b9f613ab76ad14b2f5d
 # Makefile:11031: recipe for target 'install-savertiffpkgLTLIBRARIES' failed
 PARALLEL_MAKE_class-native = ""
 
+S = "${WORKDIR}/git"
 B = "${S}"
 
