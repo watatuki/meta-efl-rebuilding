@@ -3,6 +3,8 @@ DESCRIPTION = "Enlightenment image"
 inherit core-image 
 
 
+IMAGE_LINGUAS += " ja-jp "
+
 IMAGE_FEATURES += "splash package-management x11-base" 
 
 #Enlightenment
