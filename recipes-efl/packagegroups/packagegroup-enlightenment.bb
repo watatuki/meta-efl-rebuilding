@@ -15,7 +15,10 @@ RDEPENDS_${PN} += "\
     "
 
 RDEPENDS_${PN} += " enlightenment enlightenment-session \
+                    enlightenment-config-default \
                     enlightenment-config-mobile \
+                    enlightenment-config-standard \
+                    enlightenment-config-tiling \
                     enlightenment-backgrounds \
                     elementary elementary-configs elementary-themes \
                   "
