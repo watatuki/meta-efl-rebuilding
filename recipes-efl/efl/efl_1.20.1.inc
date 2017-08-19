@@ -3,10 +3,9 @@ LICENSE = "MIT & BSD & LGPL-2.1"
 LIC_FILES_CHKSUM = "file://COPYING;md5=e5f6e713fdebf1237adf5c87de8255d8"
 
 DEPENDS_class-native = "freetype-native libxext-native libpng-native jpeg-native tiff-native libfribidi-native glib-2.0-native dbus-native openssl-native"
-#DEPENDS = "virtual/libiconv tslib curl glib-2.0 gnutls pkgconfig zlib jpeg openssl libsndfile1 dbus libexif librsvg freetype libpng tiff libxext virtual/libx11 libxdamage libxrender fontconfig libfribidi giflib udev libxcursor libxcomposite libxinerama libxrandr libxtst libxscrnsaver efl-native util-linux libunwind"
 DEPENDS = "virtual/libiconv curl glib-2.0 gnutls pkgconfig zlib jpeg openssl libsndfile1 dbus libexif librsvg freetype libpng tiff libxext \
            virtual/libx11 libxdamage libxrender fontconfig libfribidi giflib udev libxcursor libxcomposite libxinerama libxrandr libxtst \
-           libxscrnsaver efl-native util-linux libunwind wayland wayland-protocols wayland-native libxkbcommon libinput \
+           libxscrnsaver efl-native util-linux libunwind wayland wayland-protocols wayland-native libxkbcommon libinput libraw \
            poppler "
 
 inherit efl gettext pkgconfig
@@ -18,7 +17,6 @@ PROVIDES += "ecore edje eet eeze efreet eina eio embryo emotion ethumb evas eldb
 EXTRA_OECONF = " \
     --disable-physics \
     --disable-spectre \
-    --disable-libraw  \
     --enable-i-really-know-what-i-am-doing-and-that-this-will-probably-break-things-and-i-will-fix-them-myself-and-send-patches-abb \
     WAYLAND_PROTOCOLS_SYSROOT_DIR=${RECIPE_SYSROOT} \
 "
@@ -27,8 +25,8 @@ EXTRA_OECONF_append_class-target = " \
     --with-tests=none \
     --disable-always-build-examples \
     --enable-wayland --enable-wayland-ivi-shell \
-    --with-x \
-    \
+    --with-x11=xlib \
+    --with-opengl=es --enable-egl \
     \
     --with-edje-cc=${STAGING_BINDIR_NATIVE}/edje_cc \
     --with-eolian-gen=${STAGING_BINDIR_NATIVE}/eolian_gen \
@@ -48,6 +46,7 @@ EXTRA_OECONF_append_class-native = " \
     --disable-libeeze \
     --disable-poppler \
     --disable-librsvg \
+    --disable-libraw  \
     --with-x11=none \
     --disable-image-loader-bmp \
     --disable-image-loader-eet \
