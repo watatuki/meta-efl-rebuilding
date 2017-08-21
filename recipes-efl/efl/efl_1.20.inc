@@ -24,9 +24,7 @@ EXTRA_OECONF = " \
 EXTRA_OECONF_append_class-target = " \
     --with-tests=none \
     --disable-always-build-examples \
-    --enable-wayland --enable-wayland-ivi-shell \
     --with-x11=xlib \
-    --with-opengl=es --enable-egl \
     \
     --with-edje-cc=${STAGING_BINDIR_NATIVE}/edje_cc \
     --with-eolian-gen=${STAGING_BINDIR_NATIVE}/eolian_gen \
@@ -37,6 +35,7 @@ EXTRA_OECONF_append_class-target = " \
     --with-elementary-codegen=${STAGING_BINDIR_NATIVE}/elementary_codegen \
     --with-elm-prefs-cc=${STAGING_BINDIR_NATIVE}/elm_prefs_cc \
 "
+
 EXTRA_OECONF_append_class-native = " \
     --disable-fontconfig \
     --disable-audio \
@@ -64,7 +63,8 @@ EXTRA_OECONF_append_class-native = " \
     --disable-image-loader-dds \
 "
 
-PACKAGECONFIG ?= "egl opengl-es gstreamer1 pulseaudio luajit wayland "
+#PACKAGECONFIG ?= "egl opengl-es gstreamer1 pulseaudio luajit wayland "
+PACKAGECONFIG ?= "opengl-full gstreamer1 pulseaudio luajit "
 PACKAGECONFIG_class-native = "luajit"
 
 PACKAGECONFIG[wayland] = "--enable-wayland --enable-wayland-ivi-shell,--disable-wayland --disable-wayland-ivi-shell,wayland"
