@@ -63,8 +63,7 @@ EXTRA_OECONF_append_class-native = " \
     --disable-image-loader-dds \
 "
 
-#PACKAGECONFIG ?= "egl opengl-es gstreamer1 pulseaudio luajit wayland "
-PACKAGECONFIG ?= "opengl-full gstreamer1 pulseaudio luajit "
+PACKAGECONFIG ?= "egl opengl-es gstreamer1 pulseaudio luajit wayland "
 PACKAGECONFIG_class-native = "luajit"
 
 PACKAGECONFIG[wayland] = "--enable-wayland --enable-wayland-ivi-shell,--disable-wayland --disable-wayland-ivi-shell,wayland"
