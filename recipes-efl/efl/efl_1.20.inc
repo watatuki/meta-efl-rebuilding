@@ -8,7 +8,7 @@ DEPENDS = "virtual/libiconv curl glib-2.0 gnutls pkgconfig zlib jpeg openssl lib
            libxscrnsaver efl-native util-linux libunwind wayland wayland-protocols wayland-native libxkbcommon libinput libraw \
            poppler "
 
-inherit efl gettext pkgconfig
+inherit efl gettext pkgconfig systemd
 
 BBCLASSEXTEND = "native"
 
@@ -246,7 +246,9 @@ FILES_ethumb = " \
     ${libdir}/ethumb/*/*/*/*.edj \
     ${libdir}/ethumb_client/utils/*/ethumbd_slave \
     ${datadir}/ethumb* \
+    ${libdir}/systemd/user/ethumb.service \
 "
+
 FILES_ecore = " \
     ${libdir}/libecore${SOLIBS} \
     ${libdir}/ecore*/*/*/*/module.so \
@@ -366,3 +368,6 @@ FILES_${PN}-dev += " \
     ${bindir}/ecore_evas_convert \
     ${bindir}/eo_debug \
 "
+
+SYSTEMD_PACKAGES = "ethumb "
+SYSTEMD_SERVICE_${PN}-boot = "ethumb.service"
