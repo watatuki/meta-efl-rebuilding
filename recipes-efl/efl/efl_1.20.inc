@@ -246,7 +246,7 @@ FILES_ethumb = " \
     ${libdir}/ethumb/*/*/*/*.edj \
     ${libdir}/ethumb_client/utils/*/ethumbd_slave \
     ${datadir}/ethumb* \
-    ${libdir}/systemd/user/ethumb.service \
+    ${nonarch_libdir}/systemd/user/ethumb.service \
 "
 
 FILES_ecore = " \
