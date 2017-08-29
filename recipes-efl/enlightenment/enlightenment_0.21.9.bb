@@ -8,6 +8,6 @@ SRC_URI = "\
     file://applications.menu \
 "
 
-SRC_URI[md5sum] = "bf2a87f293e26467b5e5b3c1002c0021"
-SRC_URI[sha256sum] = "44332443b39ac6f0563713c3d85acbbba0011dd7659e6b7d500ec09e05896197"
+SRC_URI[md5sum] = "800bd736dcea5d7a5851836af0e298ff"
+SRC_URI[sha256sum] = "6b328eec14c5b658b8b3f448d9b65dfc189d98db7b92610e56c438f1232f4973"
 
