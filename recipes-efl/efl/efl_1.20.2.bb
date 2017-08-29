@@ -10,3 +10,4 @@ SRCREV = "4dee485ddd03452d51d0e27d5d4d4fa15a138783"
 S = "${WORKDIR}/git"
 B = "${S}"
 
+DEFAULT_PREFERENCE = "-1"
